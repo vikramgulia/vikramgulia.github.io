@@ -1,0 +1,252 @@
+a, a:focus, a:hover {
+    color: #fff;
+}
+
+/* Custom default button */
+
+.btn-default, .btn-default:hover, .btn-default:focus {
+    color: #333;
+    text-shadow: none;
+    /* Prevent inheritence from `body` */
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+/*
+ * Base structure
+ */
+
+html, body {
+    height: 100%;
+    background-color: #333;
+    color: #ffffff;
+    text-align: center;
+}
+
+.bg-dark {
+    background-color: #333 !important;
+    color: #ffffff;
+}
+
+.mastfoot ul {
+    padding-left: 0;
+}
+
+.mastfoot li {
+    font-size: 30px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+h4 {
+    font-size: 48px;
+}
+
+h4>samp {
+    font-size: 26px;
+}
+
+h4, h5 {
+    font-family: 'Audiowide';
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+/* animation */
+
+#typed-cursor {
+    font-size: 30px;
+    text-shadow: none;
+}
+
+#typed-cursor.blinking {
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        color: #333;
+    }
+    50% {
+        color: #ffffff;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: #333;
+    }
+    50% {
+        color: #ffffff;
+    }
+}
+
+@-webkit-keyframes blink {
+    from, to {
+        color: #333;
+    }
+    50% {
+        color: #ffffff;
+    }
+}
+
+@-ms-keyframes blink {
+    from, to {
+        color: #333;
+    }
+    50% {
+        color: #ffffff;
+    }
+}
+
+@-o-keyframes blink {
+    from, to {
+        color: #333;
+    }
+    50% {
+        color: #ffffff;
+    }
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+
+.site-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    /* For at least Firefox */
+    min-height: 100%;
+    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+}
+
+.site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.masthead {
+    padding-top: 60px;
+}
+
+.cover-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Padding for spacing */
+
+.inner {
+    padding: 30px;
+}
+
+/*
+ * Header
+ */
+
+.masthead-brand {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.masthead-nav {
+    position: fixed;
+    bottom: 10px;
+}
+
+.masthead-nav>li {
+    display: inline-block;
+}
+
+.masthead-nav>li+li {
+    margin-left: 20px;
+}
+
+.masthead-nav>li>a {
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    /* IE8 proofing */
+    color: rgba(255, 255, 255, .75);
+    border-bottom: 2px solid transparent;
+}
+
+.masthead-nav>li>a:hover, .masthead-nav>li>a:focus {
+    background-color: transparent;
+    border-bottom-color: #a9a9a9;
+    border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.masthead-nav>.active>a, .masthead-nav>.active>a:hover, .masthead-nav>.active>a:focus {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+/*
+ * Cover
+ */
+
+.cover {
+    padding: 0 20px;
+}
+
+.cover .btn-lg {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+    color: #999;
+    /* IE8 proofing */
+    color: rgba(255, 255, 255, .5);
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 100px) {
+    /* Pull out the header and footer */
+    .masthead {
+        position: fixed;
+        top: 0;
+    }
+    .mastfoot {
+        position: fixed;
+        bottom: 0;
+    }
+    /* Start the vertical centering */
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+    /* Handle the widths */
+    .masthead, .mastfoot, .cover-container {
+        width: 100%;
+        /* Must be percentage or pixels for horizontal alignment */
+    }
+}
+
+@media (min-width: 992px) {
+    .masthead, .mastfoot, .cover-container {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h4, h5 {
+        font-size: 30px !important;
+    }
+    .navbar-brand {
+        font-size: 1rem !important;
+    }
+}
