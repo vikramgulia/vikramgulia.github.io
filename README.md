@@ -1,4 +1,4 @@
-vikramgulia.github.io
+geekyjaat.github.io
 =====================
 
 Useful links:
