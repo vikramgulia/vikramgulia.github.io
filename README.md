@@ -1,6 +1,10 @@
 geekyjaat.github.io
 =====================
 
+# Questions and Answers
+[SuperReducedString](SuperReducedString.md)
+
+
 Useful links:
 * https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/JavaScript_basics
 * https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Dealing_with_files
