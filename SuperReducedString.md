@@ -43,11 +43,25 @@ def super_reduced_string(str, isSanityCheck):
     if before_processing == str:
         return str
     return super_reduced_string(str, True)
+    
+
+def stack_version(s):
+    stack = []
+    for c in s:
+        if len(stack) > 0:
+            if stack[len(stack) - 1] == c:
+                stack.pop()
+            else:
+                stack.append(c)
+        else:
+            stack.append(c)
+    return ''.join(stack)
 
 
 def main():
     s = input('Enter the string\n')
-    s = super_reduced_string(s, False)
+    # s = super_reduced_string(s, False)
+    s = stack_version(s)
     print(s)
 
 
