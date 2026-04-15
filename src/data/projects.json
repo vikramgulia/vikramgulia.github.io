@@ -1,10 +1,5 @@
 [
   {
-    "repo": "vikramgulia/vikramgulia.github.io",
-    "featured": false,
-    "description_override": "My personal portfolio website — built with Astro, Tailwind CSS, and a dark tech-themed design."
-  },
-  {
     "repo": "vikramgulia/fastapi-react",
     "featured": true,
     "description_override": "A fastapi-react template for building web applications. FastAPI + React + Docker + Nginx"
