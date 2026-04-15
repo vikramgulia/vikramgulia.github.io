@@ -1,7 +1,20 @@
-/.DS_Store
-/.settings/
-/.buildpath
-/.project
-/node_modules
-/.idea
-package-lock.json
+# OS
+.DS_Store
+
+# IDE
+.settings/
+.buildpath
+.project
+.idea/
+.vscode/
+
+# Dependencies
+node_modules/
+
+# Astro
+dist/
+.astro/
+
+# Environment
+.env
+.env.*

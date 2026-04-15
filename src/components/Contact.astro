@@ -1,0 +1,114 @@
+---
+---
+
+<section id="contact" class="py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold font-mono mb-3">
+        <span class="text-accent-cyan font-normal text-lg block mb-2 font-mono">// contact</span>
+        Get In Touch
+      </h2>
+      <div class="w-20 h-0.5 bg-gradient-to-r from-accent-cyan to-accent-violet mx-auto mb-4"></div>
+      <p class="text-text-muted max-w-md mx-auto">
+        Have a question, want to collaborate, or just say hello? Drop me a message and I'll get back to you.
+      </p>
+    </div>
+
+    <div class="card-base glow-border">
+      <form
+        action="https://formsubmit.co/contact@vikramgulia.com"
+        method="POST"
+        id="contact-form"
+        class="space-y-6"
+      >
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New message from vikramgulia.com" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://vikramgulia.com/#contact" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_template" value="box" />
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm font-mono text-text-muted mb-2">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your name"
+              class="w-full px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-sans text-sm"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-mono text-text-muted mb-2">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              class="w-full px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-sans text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-mono text-text-muted mb-2">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="_subject"
+            placeholder="What's this about?"
+            class="w-full px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-sans text-sm"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-mono text-text-muted mb-2">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={5}
+            placeholder="Your message..."
+            class="w-full px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-sans text-sm resize-y"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full sm:w-auto px-8 py-3 rounded-lg font-mono text-sm font-medium bg-gradient-to-r from-accent-cyan to-accent-violet text-bg-deep hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    form?.addEventListener("submit", (e) => {
+      const name = (form.querySelector("#name") as HTMLInputElement)?.value.trim();
+      const email = (form.querySelector("#email") as HTMLInputElement)?.value.trim();
+      const message = (form.querySelector("#message") as HTMLTextAreaElement)?.value.trim();
+
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        e.preventDefault();
+        alert("Please enter a valid email address.");
+      }
+    });
+  }
+
+  initContactForm();
+  document.addEventListener("astro:after-swap", initContactForm);
+</script>
