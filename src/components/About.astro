@@ -1,0 +1,77 @@
+---
+const skills = [
+  { label: "Cloud Architecture", icon: "☁️" },
+  { label: "System Design", icon: "🏗️" },
+  { label: "AI / ML", icon: "🤖" },
+  { label: "Team Leadership", icon: "👥" },
+  { label: "Distributed Systems", icon: "🌐" },
+  { label: "DevOps & CI/CD", icon: "⚙️" },
+  { label: "Microservices", icon: "🧩" },
+  { label: "Data Engineering", icon: "📊" },
+];
+---
+
+<section id="about" class="py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold font-mono mb-3">
+        <span class="text-accent-cyan font-normal text-lg block mb-2 font-mono">// about</span>
+        Who I Am
+      </h2>
+      <div class="w-20 h-0.5 bg-gradient-to-r from-accent-cyan to-accent-violet mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <!-- Terminal card -->
+      <div class="md:col-span-2">
+        <div class="card-base glow-border font-mono text-sm overflow-hidden">
+          <div class="flex items-center gap-2 mb-4 pb-3 border-b border-border-subtle">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 text-text-dim text-xs">terminal</span>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm">
+            <p><span class="text-accent-cyan">$</span> <span class="text-text-muted">cat</span> about.txt</p>
+            <p class="text-text-muted leading-relaxed pl-2 border-l-2 border-accent-cyan/30">
+              A technology leader who codes. I bridge the gap between hands-on engineering and strategic leadership, turning complex problems into elegant, scalable solutions.
+            </p>
+            <p class="mt-3"><span class="text-accent-cyan">$</span> <span class="text-text-muted">echo</span> $ROLE</p>
+            <p class="text-accent-violet pl-2">Senior Software Manager</p>
+            <p class="mt-3"><span class="text-accent-cyan">$</span> <span class="text-text-muted">echo</span> $PASSION</p>
+            <p class="text-accent-violet pl-2">Building &amp; Shipping</p>
+            <p class="mt-3 text-text-dim">
+              <span class="text-accent-cyan">$</span> <span class="animate-pulse">▊</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio and skills -->
+      <div class="md:col-span-3 space-y-8">
+        <div class="space-y-4 text-text-muted leading-relaxed">
+          <p>
+            I'm a software engineering leader with a deep passion for technology, architecture, and building products that scale. Whether it's designing distributed systems, exploring the latest in AI, or mentoring engineering teams — I thrive at the intersection of <span class="text-text-primary font-medium">technical depth</span> and <span class="text-text-primary font-medium">strategic impact</span>.
+          </p>
+          <p>
+            When I'm not leading teams, you'll find me tinkering with side projects, embracing open source adoption and development across professional workflows, or diving into the latest advancements in AI or cloud-native technologies.
+          </p>
+        </div>
+
+        <!-- Skills grid -->
+        <div>
+          <h3 class="text-sm font-mono text-accent-cyan mb-4 uppercase tracking-wider">Core Expertise</h3>
+          <div class="grid grid-cols-2 gap-3">
+            {skills.map(({ label, icon }) => (
+              <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-bg-surface/50 border border-border-subtle hover:border-accent-cyan/30 transition-colors duration-200 group">
+                <span class="text-lg">{icon}</span>
+                <span class="text-sm text-text-muted group-hover:text-text-primary transition-colors">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

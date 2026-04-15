@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Storage Calculator — Vikram Gulia">
+  <section class="pt-28 pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <a href="/" class="inline-flex items-center gap-2 text-sm text-text-dim hover:text-accent-cyan transition-colors mb-6 font-mono">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+          </svg>
+          Back to home
+        </a>
+        <h1 class="text-3xl sm:text-4xl font-bold font-mono mb-3">
+          <span class="text-accent-cyan font-normal text-lg block mb-2 font-mono">// tools</span>
+          Storage Calculator
+        </h1>
+        <div class="w-20 h-0.5 bg-gradient-to-r from-accent-cyan to-accent-violet mx-auto mb-4"></div>
+        <p class="text-text-muted max-w-md mx-auto">
+          Estimate total objects and storage needed for your system design calculations.
+        </p>
+      </div>
+
+      <div class="card-base glow-border">
+        <div class="space-y-6">
+          <!-- Requests / Objects -->
+          <div>
+            <label class="block text-sm font-mono text-text-muted mb-2">Requests / Objects</label>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="number"
+                id="numOfRequests"
+                value="500"
+                class="flex-1 px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-mono text-sm"
+              />
+              <select id="requestUnits" class="px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan transition-all font-mono text-sm">
+                <option value="1">none</option>
+                <option value="1000">thousands</option>
+                <option value="1000000" selected>million</option>
+              </select>
+              <select id="requestPerTime" class="px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan transition-all font-mono text-sm">
+                <option value="1">per day</option>
+                <option value="30" selected>per month</option>
+                <option value="365">per year</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Total Years -->
+          <div>
+            <label class="block text-sm font-mono text-text-muted mb-2">Total Years</label>
+            <div class="flex items-center gap-3">
+              <input
+                type="number"
+                id="totalYears"
+                value="5"
+                class="flex-1 px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-mono text-sm"
+              />
+              <label class="flex items-center gap-2 px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-muted text-sm font-mono cursor-pointer hover:border-accent-cyan/30 transition-colors">
+                <input type="checkbox" id="excludeYears" class="accent-accent-cyan" />
+                Exclude
+              </label>
+            </div>
+          </div>
+
+          <!-- Object Size -->
+          <div>
+            <label class="block text-sm font-mono text-text-muted mb-2">Object Size</label>
+            <div class="flex gap-3">
+              <input
+                type="number"
+                id="objectSize"
+                value="500"
+                class="flex-1 px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all font-mono text-sm"
+              />
+              <select id="objectSizeUnit" class="px-4 py-3 rounded-lg bg-bg-deep border border-border-subtle text-text-primary focus:outline-none focus:border-accent-cyan transition-all font-mono text-sm">
+                <option value="1" selected>Bytes</option>
+                <option value="1000">KB</option>
+                <option value="1000000">MB</option>
+                <option value="1000000000">GB</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Calculate Button -->
+          <button
+            type="button"
+            id="calculate-btn"
+            class="w-full px-6 py-3 rounded-lg font-mono text-sm font-medium bg-gradient-to-r from-accent-cyan to-accent-violet text-bg-deep hover:opacity-90 transition-opacity duration-200"
+          >
+            Calculate
+          </button>
+
+          <!-- Results -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-border-subtle">
+            <div class="px-4 py-4 rounded-lg bg-bg-deep border border-border-subtle">
+              <p class="text-xs font-mono text-text-dim mb-1 uppercase tracking-wider">Total Objects</p>
+              <p id="totalObjects" class="text-2xl font-mono font-bold text-accent-cyan">—</p>
+            </div>
+            <div class="px-4 py-4 rounded-lg bg-bg-deep border border-border-subtle">
+              <p class="text-xs font-mono text-text-dim mb-1 uppercase tracking-wider">Storage Needed</p>
+              <p id="storageNeeded" class="text-2xl font-mono font-bold text-accent-violet">—</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function bytesToSize(bytes: number): string {
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+    if (bytes === 0) return "0 Bytes";
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return (bytes / Math.pow(1024, i)).toFixed(2) + " " + sizes[i];
+  }
+
+  function numberToDenomination(value: number): string {
+    const abs = Math.abs(value);
+    if (abs >= 1e9) return (abs / 1e9).toFixed(2) + "B";
+    if (abs >= 1e6) return (abs / 1e6).toFixed(2) + "M";
+    if (abs >= 1e3) return (abs / 1e3).toFixed(2) + "K";
+    return abs.toString();
+  }
+
+  function initCalculator() {
+    const btn = document.getElementById("calculate-btn");
+    btn?.addEventListener("click", () => {
+      const numOfRequests = parseFloat((document.getElementById("numOfRequests") as HTMLInputElement).value) || 0;
+      const requestUnits = parseFloat((document.getElementById("requestUnits") as HTMLSelectElement).value) || 1;
+      const requestPerTime = parseFloat((document.getElementById("requestPerTime") as HTMLSelectElement).value) || 1;
+      const totalYears = parseFloat((document.getElementById("totalYears") as HTMLInputElement).value) || 0;
+      const objectSize = parseFloat((document.getElementById("objectSize") as HTMLInputElement).value) || 0;
+      const objectSizeUnit = parseFloat((document.getElementById("objectSizeUnit") as HTMLSelectElement).value) || 1;
+      const excludeYears = (document.getElementById("excludeYears") as HTMLInputElement).checked;
+
+      let totalObjects: number;
+      if (excludeYears) {
+        totalObjects = numOfRequests * requestUnits;
+      } else {
+        totalObjects = totalYears * 365 * ((numOfRequests * requestUnits) / requestPerTime);
+      }
+
+      const totalBytes = totalObjects * objectSize * objectSizeUnit;
+
+      const objEl = document.getElementById("totalObjects");
+      const storEl = document.getElementById("storageNeeded");
+      if (objEl) objEl.textContent = numberToDenomination(totalObjects);
+      if (storEl) storEl.textContent = bytesToSize(totalBytes);
+    });
+  }
+
+  initCalculator();
+  document.addEventListener("astro:after-swap", initCalculator);
+</script>

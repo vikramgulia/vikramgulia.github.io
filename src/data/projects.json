@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "vikramgulia/vikramgulia.github.io",
+    "featured": false,
+    "description_override": "My personal portfolio website — built with Astro, Tailwind CSS, and a dark tech-themed design."
+  },
+  {
+    "repo": "vikramgulia/fastapi-react",
+    "featured": true,
+    "description_override": "A fastapi-react template for building web applications. FastAPI + React + Docker + Nginx"
+  },
+  {
+    "repo": "vikramgulia/spring-batch",
+    "featured": true,
+    "description_override": "A Spring Boot Batch Starter Example."
+  },
+  {
+    "repo": "vikramgulia/spring-react",
+    "featured": true,
+    "description_override": "Another started project app with Spring, React JS, Gradle and Webpack"
+  },
+  {
+    "repo": "vikramgulia/blog-app",
+    "featured": true,
+    "description_override": "A simple blog app with material ui app with node and pug"
+  },
+  {
+    "repo": "vikramgulia/barcode-scanner",
+    "featured": true,
+    "description_override": "An Expo based react native barcode scanner/camera app."
+  },
+  {
+    "repo": "vikramgulia/spring-soap-service",
+    "featured": true,
+    "description_override": "A demo SOAP service with Spring Boot."
+  }
+]
